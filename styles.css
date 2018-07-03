@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css');
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vmax;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  width: inherit;
+  min-height: inherit;
+}
+
+.wrapper__child {
+  flex: 1;
+  grid-template-rows: 16em minmax(20em, 4fr); 
+}
+
+.container--grid {
+  display: grid;
+}
+
+.container__grid-columns {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-gap: 0.5em;
+}
+
+.container__grid-column--is-12 {
+  grid-column: 1 / 13;
+}
+
+
+@media screen and (min-width: 769px) {
+  .wrapper__child {
+    grid-template-rows: 1fr;
+  }
+
+  .navbar {
+    grid-column: 1 / 5;
+  }
+
+  .main {
+    grid-column: 5 / 13;
+  }
+}
