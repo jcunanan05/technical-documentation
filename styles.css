@@ -10,6 +10,8 @@
 html, body {
   width: 100%;
   min-height: 100vmax;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
 }
 
 .wrapper {
@@ -17,37 +19,71 @@ html, body {
   flex-flow: column;
   width: inherit;
   min-height: inherit;
+  max-width: 70rem;
+  margin: auto;
 }
 
 .wrapper__child {
   flex: 1;
-  grid-template-rows: 16em minmax(20em, 4fr); 
+  flex-flow: wrap;
+  align-content: flex-start;
 }
 
-.container--grid {
-  display: grid;
+.container--flex {
+  display: flex;
 }
 
-.container__grid-columns {
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-gap: 0.5em;
+.flex--column {
+  flex-flow: column;
 }
 
-.container__grid-column--is-12 {
-  grid-column: 1 / 13;
+.navbar {
+  flex: 1;
+  flex-basis: 15rem;
+  /* flex-basis makes the divs change from 2 column layout to 1 by using the wrap */
+  min-height: 13em;
 }
 
+.navbar__wrapper {
+  margin: 0 1.5em;
+}
+
+.nav-list {
+  display: flex;
+  flex-flow: column;
+  list-style: none;
+  max-height: 7em;
+  overflow: auto;
+  padding: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.2em;
+  border: 1px solid black;
+}
+
+.nav-link a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-decoration: none;
+  color: black;
+}
+
+.main {
+  flex: 1;
+  flex-basis: 35rem;
+}
 
 @media screen and (min-width: 769px) {
-  .wrapper__child {
-    grid-template-rows: 1fr;
-  }
-
-  .navbar {
-    grid-column: 1 / 5;
-  }
-
-  .main {
-    grid-column: 5 / 13;
+  .navbar__wrapper {
+    /* navbar will stay at desktop size */
+    position: sticky;
+    top: 0;
   }
 }
