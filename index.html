@@ -10,26 +10,135 @@
 <body>
   <div class="wrapper">
     <div class="wrapper__child container--flex">
-      <nav class="navbar">
+      <nav class="navbar" id="navbar">
         <div class="navbar__wrapper">
-          <header class="header">
-            <h2>Tech Docs</h2>
+          <header class="navbar__title">
+            <h2>Sample Flexbox Guide</h2>
           </header>
 
           <ul class="nav-list">
-            <li class="nav-link"><a href="#">One</a></li>
-            <li class="nav-link"><a href="#">Two</a></li>
-            <li class="nav-link"><a href="#">Three</a></li>
-            <li class="nav-link"><a href="#">Four</a></li>
-            <li class="nav-link"><a href="#">Five</a></li>
+            <li class="nav-list__child"><a class="nav-link" href="#">Flexbox</a></li>
           </ul>
         </div>
       </nav>
 
-      <main class="main">
-        <h2>Main</h2>
+      <main class="main" id="main-doc">
+        <header class="main__header">
+          <h1>Basic concepts of flexbox</h1>
+        </header>
+
+        <article class="main__wrapper">
+          <section class="main-section">
+            <header>
+              <h2>The two axes of flexbox</h2>
+            </header>
+
+            <p>When working with flexbox you need to think in terms of two axes — the main axis and the cross axis. The main axis is defined by the <span class="highlight"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction">flex-direction</a></span> property, and the cross axis runs perpendicular to it. Everything we do with flexbox refers back to these axes, so it is worth understanding how they work from the outset.</p>
+
+            <h3>The Main axis</h3>
+
+            <p>The main axis is defined by <span class="highlight">flex-direction</span>, which has four possible values:</p>
+
+            <ul>
+              <li>row</li>
+              <li>row-reverse</li>
+              <li>column</li>
+              <li>column-reverse</li>
+            </ul>
+          </section>
+
+          <section class="main-section">
+            <header>
+              <h2>flex-flow shorthand</h2>
+            </header>
+
+            <p>At this point it is worth noting that a shorthand exists for <a href="/en-US/docs/Web/CSS/flex-direction" title="The flex-direction CSS property specifies how flex items are placed in the flex container defining the main axis and the direction (normal or reversed)."><code>flex-direction</code></a> and <a href="/en-US/docs/Web/CSS/flex-wrap" title="The CSS flex-wrap property specifies whether flex items are forced into a single line or can be wrapped onto multiple lines. If wrapping is allowed, this property also enables you to control the direction in which lines are stacked."><code>flex-wrap</code></a> — <a href="/en-US/docs/Web/CSS/flex-flow" title="The flex-flow CSS property is a shorthand property for flex-direction and flex-wrap individual properties."><code>flex-flow</code></a>. So for example, you can replace</p>
+
+<pre class="code"><code>flex-direction: row;
+flex: wrap;
+</code></pre>
+
+            <p>with</p>
+<pre class="code"><code>flex-flow: row wrap;</code></pre>
+          </section>
+
+          <section class="main-section">
+            <header>
+              <h2>Horizontal and vertical alignment</h2>
+            </header>
+
+            <p>You can also use flexbox features to align flex items along the main or cross axis. Let's explore this by looking at a new example — <a href="https://github.com/mdn/learning-area/blob/master/css/css-layout/flexbox/flex-align0.html" class="external external-icon" rel="noopener">flex-align0.html</a> (<a href="http://mdn.github.io/learning-area/css/css-layout/flexbox/flex-align0.html" class="external external-icon" rel="noopener">see it live also</a>) — which we are going to turn into a neat, flexible button/toolbar. At the moment you'll see a horizontal menu bar, with some buttons jammed into the top left hand corner.</p>
+
+            <!-- <p><img src="https://mdn.mozillademos.org/files/13414/flexbox-example5.png" alt=""></p> -->
+
+            <p>First, take a local copy of this example.</p>
+
+            <p>Now, add the following to the bottom of the example's CSS:</p>
+
+<pre class="code"><code>div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}</code></pre>
+          </section>
+
+          <section class="main-section">
+            <header>
+              <h2>Ordering flex items</h2>
+            </header>
+
+            <p>Flexbox also has a feature for changing the layout order of flex items, without affecting the source order. This is another thing that is impossible to do with traditional layout methods.</p>
+
+            <p>The code for this is simple: try adding the following CSS to your button bar example code:</p>
+
+<pre class="code"><code>button:first-child {
+  order: 1;
+}
+</code></pre>
+
+            <p>Refresh, and you'll now see that the "Smile" button has moved to the end of the main axis. Let's talk about how this works in a bit more detail:</p>
+
+            <ul>
+              <li>By default, all flex items have an <a href="/en-US/docs/Web/CSS/order" title="The order CSS property specifies the order used to lay out a flex or grid item in its flex or grid container. Items within the same container are laid out in ascending order according to their order values. Elements with the same order value are laid out in the order in which they appear in the source code."><code>order</code></a> value of 0.</li>
+
+              <li>Flex items with higher order values set on them will appear later in the display order than items with lower order values.</li>
+
+              <li>Flex items with the same order value will appear in their source order. So if you have four items with order values of 2, 1, 1, and 0 set on them respectively, their display order would be 4th, 2nd, 3rd, then 1st.</li>
+
+              <li>The 3rd item appears after the 2nd because it has the same order value and is after it in the source order.</li>
+            </ul>
+          </section>
+
+          <section class="main-section">
+            <header>
+              <h2>Cross browser compatibility</h2>
+            </header>
+
+            <p>Flexbox support is available in most new browsers — Firefox, Chrome, Opera, Microsoft Edge and IE 11, newer versions of Android/iOS, etc. However you should be aware that there are still older browsers in use that don't support Flexbox (or do, but support a really old, out-of-date version of it.)</p>
+            
+            <p>While you are just learning and experimenting, this doesn't matter too much; however if you are considering using flexbox in a real website you need to do testing and make sure that your user experience is still acceptable in as many browsers as possible.</p>
+            
+            <p>Flexbox is a bit trickier than some CSS features. For example, if a browser is missing a CSS drop shadow, then the site will likely still be usable. Not supporting flexbox features however will probably break a layout completely, making it unusable.</p>
+            
+            <p>We discuss strategies for overcoming cross browser support issues in our <a href="/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing">Cross browser testing</a> module.</p>
+          </section>
+
+          <section class="main-section">
+            <header>
+              <h2>References</h2>
+            </header>
+
+            <p>For more information check the official docs.</p>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">MDN Flexbox Webdocs</a></li>
+            </ul>
+          </section>
+        </article>
       </main>
     </div>
   </div>
+
+  <script src="https://gitcdn.link/repo/freeCodeCamp/testable-projects-fcc/master/build/bundle.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
