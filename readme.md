@@ -7,6 +7,7 @@ Hi! This is a fCC Responsive Design Certification Challenge. The challenge is to
 * Advanced CSS Selectors
 * CSS Grid
 * CSS Flexbox
+* CSS Variables
 * Media Queries and Breakpoints
 * CSS BEM__Naming
 * Dynamically put nav-links using Javascript
@@ -14,9 +15,11 @@ Hi! This is a fCC Responsive Design Certification Challenge. The challenge is to
 * pre-formatted text
 * responsive texts
 * ```position: sticky```
+* ```box-sizing: border-box```
 
 ## Concepts applied in building the project:
 * CSS Flexbox
+* CSS Variables
 * Media Queries and Breakpoints
 * CSS BEM__Naming
 * Dynamically put nav-links using Javascript
@@ -24,3 +27,4 @@ Hi! This is a fCC Responsive Design Certification Challenge. The challenge is to
 * pre-formatted text
 * responsive texts
 * ```position: sticky```
+* ```box-sizing: border-box```
